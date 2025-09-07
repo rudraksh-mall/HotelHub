@@ -41,13 +41,14 @@ const Navbar = () => {
   React.useEffect(() => {
     if (location.pathname !== "/") {
       setIsScrolled(true);
-      return;
-    } else setIsScrolled = false;
-    setIsScrolled((prev) => (location.pathname !== "/" ? true : prev));
+    } else {
+      setIsScrolled(false);
+    }
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
@@ -87,14 +88,16 @@ const Navbar = () => {
             />
           </Link>
         ))}
-        <button
-          onClick={() => navigate("/owner")}
-          className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
-            isScrolled ? "text-black" : "text-white"
-          } transition-all`}
-        >
-          Dashboard
-        </button>
+        {user && (
+          <button
+            onClick={() => navigate("/owner")}
+            className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
+              isScrolled ? "text-black" : "text-white"
+            } transition-all`}
+          >
+            Dashboard
+          </button>
+        )}
       </div>
 
       {/* Desktop Right */}
