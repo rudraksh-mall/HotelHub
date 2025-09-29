@@ -75,7 +75,7 @@ const Navbar = () => {
         {navLinks.map((link, i) => (
           <Link
             key={i}
-            href={link.path}
+            to={link.path}
             className={`group flex flex-col gap-0.5 ${
               isScrolled ? "text-gray-700" : "text-white"
             }`}
