@@ -26,7 +26,7 @@ const userSchema = new Schema(
     recentSearchedCities: [
       {
         type: String,
-        required: true,
+        default: [],
       },
     ],
   },
